@@ -1,0 +1,113 @@
+/* Reset de estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales del cuerpo */
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  background-color: #f9f4e7; /* Color de fondo suave */
+  color: #b42f2f; /* Color del texto mejorado para mejor contraste */
+  line-height: 1.8; /* Mejora del espacio entre líneas */
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
+  padding: 20px;
+}
+
+/* Título principal */
+h1 {
+  color: #b42f2f;
+  font-size: 3.5em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Texto de contenido */
+.texto-zafira {
+  font-size: 2em;
+  color: #b42f2f;
+  text-align: justify;
+  max-width: 1200px;
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+/* Estilos botón de inicio */
+.inicio-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #b42f2f;
+  color: #f5ecd8;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inicio-button:hover {
+  background-color: #7d2929; /* Fondo más oscuro en hover */
+  color: #ffffff; /* Texto blanco en hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra al hover */
+}
+
+/* Estilos de medios responsivos */
+@media (max-width: 1024px) {
+  h1 {
+      font-size: 3em; /* Reduce el tamaño del título */
+  }
+
+  .texto-zafira {
+      font-size: 1.2em;
+      padding: 15px;
+  }
+
+  .inicio-button {
+      font-size: 1em;
+      padding: 8px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  body, html {
+      padding: 10px;
+  }
+
+  h1 {
+      font-size: 2.5em;
+  }
+
+  .texto-zafira {
+      font-size: 1em;
+  }
+
+  .inicio-button {
+      top: 10px;
+      left: 10px;
+      font-size: 0.9em;
+      padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+      font-size: 2em;
+  }
+
+  .texto-zafira {
+      font-size: 0.9em;
+  }
+
+  .inicio-button {
+      font-size: 0.8em;
+      padding: 6px 10px;
+  }
+}
