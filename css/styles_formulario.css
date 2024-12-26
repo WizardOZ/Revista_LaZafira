@@ -72,6 +72,26 @@ button:hover {
     background-color: #7d2929;
 }
 
+input{
+    margin-top: 1rem;
+}
+input::file-selector-button{
+    background-color: #A63E3E;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: relative;
+    display: inline-block;
+}
+
 @media (max-width: 768px) {
 
     /* Ajuste general */
