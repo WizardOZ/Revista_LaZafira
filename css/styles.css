@@ -1,0 +1,516 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  background-color: #fff6ed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-image: url("css/img/cabecera.png");
+  background-color: black;
+  color: #fff6ed;
+  padding: 15px;
+  position: fixed;
+  display: flex;
+  width: 100%;
+}
+
+.tabla-cabeza{
+  text-align: center;
+  width: 100%;
+}
+
+#header-logo {
+  max-width: 300px; 
+  margin: auto;
+
+}
+/* Main Title Navigation */
+.main-title {
+  display: flex;
+  gap: 20px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  background-color: black;
+}
+
+.main-title a {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease;
+  border-width:5px;
+  border-left: #b42f2f 3px solid;
+  border-right: #b42f2f 3px solid;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.highlight {
+  color: #b42f2f;
+}
+
+
+.main-title a:hover {
+  color: #b42f2f;
+}
+
+.main-title .line{
+  color: #fff6ed;
+}
+
+/* Dropdown Menu */
+.envios-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  list-style: none;
+  position: absolute;
+  background: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  width: 200px;
+  border-radius: 5px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.envios-container:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  padding: 10px;
+  display: block;
+  color: #fff6ed;
+  font-size: 1em;
+  text-decoration: none;
+  border-bottom: white 5px solid;
+
+}
+
+.dropdown-menu li a:hover {
+  background: #f5f5f5;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.announcement-button {
+  
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #333;
+  padding: 20px 30px;
+  transition: all 0.3s ease;
+}
+
+/* Texto de contenido */
+.texto-zafira {
+  font-size: 2em;
+  color: #fff6ed;
+  text-align: justify;
+  max-width: 1200px;
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+.texto-zafira h1{
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: #fff6ed;
+  text-align: center;
+  margin-top: auto;
+  height: 90px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-text {
+  text-align: left;
+  font-size: 1em;
+  color: #fff6ed;
+  margin-right: 100px;
+}
+.contact-text p{
+  font-size: 13px;
+}
+
+.divider {
+  color: #fff6ed;
+  font-size: 3em;
+}
+.email-section{
+  color: #fff6ed;
+}
+.email-section a{
+  color: #b42f2f;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+  opacity: 0.7;
+}
+
+
+.botton-image{
+  height: 90px;
+  width: 90px;
+}
+
+
+/* Diseño de la cuadrícula */
+.archivo-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(345px, 1fr)
+  ); /* Aumentamos el tamaño mínimo de las columnas */
+  gap: 69px;
+  justify-items: center;
+  padding: 0 20px;
+  max-width: 1610px;
+  margin: 0 auto;
+}
+
+/* Estilo de los elementos del archivo */
+.archivo-item {
+  text-align: center;
+  color: #fff6ed;
+}
+
+.archivo-item img {
+  width: 302px;
+  height: 386px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.archivo-item p {
+  font-weight: bold;
+  margin: 14px 0;
+  font-size: 1.38em;
+}
+
+.pdf-link {
+  color: #fff6ed;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.61em;
+}
+
+.pdf-link:hover {
+  color: #ccc;
+}
+
+.linea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.linea hr {
+  width: 800px;
+  border: 1px solid white;
+  margin: 0;
+  margin-right: 45px;
+  margin-left: 45px;
+}
+
+.linea span {
+  font-size: 2.76em;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  line-height: 1;
+}
+
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  background-color: #fff6ed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenido */
+.content{
+  padding-top: 300px;
+}
+
+/* Contenido Arriba */
+.up-content {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff6ed;
+  height: 2000px;
+}
+
+/* Contenido Abajo */
+.down-content {
+  flex: 1;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff6ed;
+}
+
+.calendar-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #444;
+  color: #fff6ed;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.calendar-header button {
+  background: #666;
+  color:  #fff6ed;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.calendar-header button:hover {
+  background: #555;
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.calendar th, .calendar td {
+  border: 1px solid #555;
+  text-align: center;
+  padding: 10px;
+}
+
+.calendar td {
+  cursor: pointer;
+}
+
+.calendar td:hover {
+  background: #555;
+}
+
+.current-day {
+  background-color: grey;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Botón para volver al mes actual */
+.current-month {
+  background: #b42f2f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.current-month:hover {
+  background: #a22b2b;
+}
+
+/* Botón flotante para volver arriba */
+.scroll-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: black;
+  color: #b42f2f;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 30px;
+  display: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.scroll-to-top:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Cuadrícula de archivos */
+.archivo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(345px, 1fr)); /* Columnas adaptables */
+  gap: 20px;
+  justify-items: center;
+  padding: 0 20px;
+  max-width: 1610px;
+  margin: 0 auto;
+}
+
+.archivo-item {
+  text-align: center;
+  color: white;
+}
+
+.archivo-item img {
+  width: 302px;
+  height: 386px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.archivo-item p {
+  font-weight: bold;
+  margin: 14px 0;
+  font-size: 1.38em;
+}
+
+.pdf-link {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 1.61em;
+}
+
+.pdf-link:hover {
+  color: #ccc;
+}
+
+.linea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  padding-left: 50px;
+}
+
+.linea hr {
+  width: 800px;
+  border: 1px solid white;
+  margin: 0;
+  margin-right: 45px;
+  margin-left: 45px;
+}
+
+.linea span {
+  font-size: 2.76em;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .archivo-grid {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas medianas */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .main-title {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .announcement-button {
+    font-size: 1.2em;
+    padding: 15px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .archivo-grid {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    gap: 20px;
+  }
+
+  .archivo-item img {
+    width: 100%;
+    height: auto; /* Mantén la proporción de la imagen */
+  }
+
+  .linea hr {
+    width: 100%; /* Ocupa el ancho completo en pantallas pequeñas */
+    margin: 0 10px;
+  }
+
+  .linea span {
+    font-size: 2em;
+  }
+}

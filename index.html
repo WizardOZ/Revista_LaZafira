@@ -11,34 +11,71 @@
 </head>
 <body>
   <header>
-    <h1 class="highlight">LA ZAFIRA</h1>
-    <nav class="main-title">
-      <a href="index.html" class="line">INICIO</a>
-      <!--<a href="archivo.html" class="outline">ARCHIVO</a>-->
-      <div class="envios-container">
-        <a href="#" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
-        <ul class="dropdown-menu" role="menu">
-          <!--<li><a href="texto.html" role="menuitem">Texto</a></li>-->
-          <!--<li><a href="portada.html" role="menuitem">Portada</a></li>-->
-          <li><a href="obra.html" role="menuitem">Obra Gráfica</a></li>
-        </ul>
-      </div>
-     <!-- <a href="zafira.html" class="outline">SOBRE NOSOTROS</a> -->
-    </nav>
+    <table class="tabla-cabeza">
+      <tr>
+        <td><img id="header-logo" src="css/img/cabecera.png"></td>
+      </tr>
+      <tr class="main-title">
+        <td>
+          <a href="index.html" class="line">INICIO</a>
+        </td>
+        <td>
+          <nav class="envios-container line">
+              <a href="#" style="pointer-events: none;" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="texto.html" role="menuitem">Texto</a></li>
+                <li><a href="portada.html" role="menuitem">Portada</a></li>
+                <li><a href="obra.html" role="menuitem">Obra Gráfica</a></li>
+              </ul>
+          </nav>
+        </td>
+        <td>
+          <a href="zafira.html" class="line">¿QUIÉNES SOMOS?</a>
+        </td>
+        <!--<a href="archivo.html" class="outline">ARCHIVO</a>-->
+      </tr>
+    </table>
+    
+    
   </header>
 
-  <div class="container">
-    <!-- Contenido Izquierdo -->
-    <div class="left-content">
-      <h1 class="highlight" align="center" style="text-decoration: underline;"> NOTICIAS </h1>
-      <a href="obra.html" class="announcement-button">
-        <h2>CONVOCATORIA ABIERTA</h2>
-        <p>Hasta 01 MARZO 2025</p>
-      </a>
+  <div class="content">
+  <!-- Contenido Superior -->
+    <div class="up-content">
+
+      <h1 class="highlight" align="center" style="text-decoration: underline;"> TABLÓN DE ANUNCIOS</h1>
+      <br>
+      <table class="tabla-noticias">
+        <tr>
+          <td>
+            <h2>BIENVENIDA</h2>
+            <br>
+            <p>
+              <strong>(Texto de ejemplo)</strong>
+              LaZafira, la revista de arte emergente, abre su convocatoria para el diseño de portada de su
+              primer número, que será lanzado en junio de 2025. Invitamos especialmente a artistas
+              visuales, diseñadores y creadores residentes en Andalucía que deseen participar en este
+              proyecto. Las propuestas podrán ser enviadas a través de esta plataforma durante el
+              próximo mes. La obra seleccionada aparecerá como portada de esta primera edición y se
+              incluirá también en una de sus páginas interiores.
+             </p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              <h2><a href="obra.html" class="announcement-button">CONVOCATORIA DE OBRAS GRÁFICAS</a></h2>
+              <p>Cierre: 01 MARZO 2025</p>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
     </div>
 
-    <!-- Contenido Derecho -->
-    <div class="right-content">
+    <!-- Contenido Inferior -->
+    <div class="down-content">
       <div class="calendar-container">
         <div class="calendar-header">
           <button class="prev-month">&lt;</button>
@@ -63,7 +100,7 @@
         
       </div>
       <div class="important-dates">
-        <h2>Fechas importantes</h3>
+        <h2>Fechas importantes</h2>
         <ul>
           <li>01 MARZO 2025: Cierre de convocatoria</li>
           <li>15 ABRIL 2025: Publicación de resultados</li>
@@ -71,7 +108,6 @@
       </div>
     </div>
   </div>
-  <br>
   <footer>
     <div class="footer-content">
       <div class="contact-section">
@@ -95,13 +131,12 @@
           </a>
         </dt>
       </dl>
-      <span class="divider">|</span>
-      <img class="botton-image" src="css/img/simbolo_lazafira.png" alt="simbolo_lazafira" title="La Zafira">
     </div>
   </footer>
 
   <button class="scroll-to-top" aria-label="Volver arriba">↑</button>
 
   <script src="js/calendar.js"></script>
+   
 </body>
 </html>
