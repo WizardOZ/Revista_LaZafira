@@ -86,7 +86,7 @@ calendar.init();
 const scrollToTopButton = document.querySelector(".scroll-to-top");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
+  if (window.scrollY > 1) {
     scrollToTopButton.style.display = "block";
   } else {
     scrollToTopButton.style.display = "none";
@@ -96,3 +96,56 @@ window.addEventListener("scroll", () => {
 scrollToTopButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+//Script encargado de leer e interpretar las fechas importantes
+
+ const dataTableBody = document.querySelector('#dataTable tbody');
+
+    // Ruta del archivo .txt (debe estar alojado en el servidor)
+    const fileUrl = 'fechas.txt'; // Cambia a la URL donde esté alojado el archivo
+
+    fetch(fileUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('No se pudo cargar el archivo.');
+        }
+        return response.text();
+      })
+      .then(content => {
+        const lines = content.split('\n'); // Divide el contenido en líneas
+        const parsedData = [];
+
+        lines.forEach((line) => {
+          const columns = line.trim().split(/\s+/); // Divide por espacios o tabulaciones
+          if (columns.length >= 4) {
+            const [day, month, year, ...textParts] = columns;
+            const text = textParts.join(' '); // Reconstruye el texto si contiene espacios
+            const date = new Date(`${year}-${month}-${day}`);
+            parsedData.push({ date, text });
+          }
+        });
+
+        populateTable(parsedData);
+      })
+      .catch(error => console.error('Error:', error));
+
+    function populateTable(data) {
+      const today = new Date(); // Fecha actual
+      dataTableBody.innerHTML = ''; // Limpia el contenido previo de la tabla
+
+      data.forEach((item) => {
+        const row = document.createElement('tr');
+        const formattedDate = `${item.date.getDate().toString().padStart(2, '0')}/` +
+                              `${(item.date.getMonth() + 1).toString().padStart(2, '0')}/` +
+                              `${item.date.getFullYear()}`;
+
+        const status = item.date < today ? 'Finalizado' : 'Abierta';
+
+        row.innerHTML = `
+          <td>${formattedDate}</td>
+          <td>${item.text}</td>
+          <td>${status}</td>
+        `;
+        dataTableBody.appendChild(row);
+      });
+    }

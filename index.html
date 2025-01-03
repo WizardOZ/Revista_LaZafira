@@ -21,7 +21,7 @@
         </td>
         <td>
           <nav class="envios-container line">
-              <a href="#" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
+              <a href="#" style="pointer-events: none;" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="texto.html" role="menuitem">Texto</a></li>
                 <li><a href="portada.html" role="menuitem">Portada</a></li>
@@ -39,13 +39,13 @@
     
   </header>
 
-  <div>
+  <div class="content">
   <!-- Contenido Superior -->
     <div class="up-content">
 
       <h1 class="highlight" align="center" style="text-decoration: underline;"> TABLÓN DE ANUNCIOS</h1>
       <br>
-      <table class="tabla-noticias">
+      <table class="tabla-noticias" align="center">
         <tr>
           <td>
             <h2>BIENVENIDA</h2>
@@ -61,25 +61,38 @@
              </p>
           </td>
         </tr>
-
+      </table>
+      <br>
+      <br>
+      <table class="tabla-convocatorias">
+        <h1 class="highlight" align="center" style="text-decoration: underline;"> TABLÓN DE CONVOCATORIAS</h1>
+        <br>
         <tr>
           <td>
               <h2><a href="obra.html" class="announcement-button">CONVOCATORIA DE OBRAS GRÁFICAS</a></h2>
-              <p>Cierre: 01 MARZO 2025</p>
+              <p>(Cierre: 01 MARZO 2025)</p>
           </td>
         </tr>
         <tr>
-          <td></td>
+          <td>
+            <h2><a href="portada.html" class="announcement-button">CONVOCATORIA DE PORTADAS</a></h2>
+              <p>(Cierre: 01 MARZO 2025)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h2><a href="texto.html" class="announcement-button">CONVOCATORIA DE TEXTOS CRÍTICOS</a></h2>
+              <p>(Cierre: 01 MARZO 2025)</p>
+          </td>
         </tr>
       </table>
-      
-        
-      </a>
     </div>
 
     <!-- Contenido Inferior -->
     <div class="down-content">
       <div class="calendar-container">
+        <h2><u>CALENDARIO</u></h2>
+        <br>
         <div class="calendar-header">
           <button class="prev-month">&lt;</button>
           <button class="current-month">Hoy</button>
@@ -102,12 +115,20 @@
         </table>
         
       </div>
+      <br>
       <div class="important-dates">
-        <h2>Fechas importantes</h3>
-        <ul>
-          <li>01 MARZO 2025: Cierre de convocatoria</li>
-          <li>15 ABRIL 2025: Publicación de resultados</li>
-        </ul>
+        <h2><u>FECHAS RELEVANTES</u></h2>
+        <br>
+        <table id="dataTable">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Convocatoria</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
   </div>

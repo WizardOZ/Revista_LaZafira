@@ -14,17 +14,19 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+
 }
 
 /* Header */
 header {
-  background-image: url("css/img/cabecera.png");
   background-color: black;
   color: #fff6ed;
   padding: 15px;
   position: fixed;
   display: flex;
   width: 100%;
+  height: auto;
 }
 
 .tabla-cabeza{
@@ -123,9 +125,7 @@ header {
 .announcement-button {
   
   text-decoration: none;
-  font-size: 1.5em;
   color: #333;
-  padding: 20px 30px;
   transition: all 0.3s ease;
 }
 
@@ -135,12 +135,30 @@ header {
   color: #fff6ed;
   text-align: justify;
   max-width: 1200px;
-  margin: 0 auto; /* Centra el contenido horizontalmente */
+  margin: auto; /* Centra el contenido horizontalmente */
 }
 
 .texto-zafira h1{
   text-align: center;
   padding-bottom: 50px;
+}
+
+/*Tablas de contenido del body*/
+
+.tabla-noticias{
+
+  padding: 30px;
+  width: 100%;
+  border: 1px solid red;
+
+}
+
+.tabla-convocatorias{
+
+  padding: 30px;
+  width: 100%;
+  border: 1px solid red;
+  text-align: center;
 }
 
 /* Footer */
@@ -149,7 +167,7 @@ footer {
   color: #fff6ed;
   text-align: center;
   margin-top: auto;
-  height: 90px;
+  height: AUTO;
 }
 
 .footer-content {
@@ -172,6 +190,12 @@ footer {
 .divider {
   color: #fff6ed;
   font-size: 3em;
+}
+.email-section{
+  color: #fff6ed;
+}
+.email-section a{
+  color: #b42f2f;
 }
 
 .social-icons {
@@ -283,19 +307,27 @@ body {
   flex-direction: column;
 }
 
-/* Contenido Izquierdo */
+/* Contenido */
+.content{
+  padding-top: 300px;
+}
+
+/* Contenido Arriba */
 .up-content {
   flex: 1;
   overflow-y: auto;
-  padding-top: 300px;
   background: #fff6ed;
-  height: 2000px;
+  height: 1700px;
+  align-items: center;
+
 }
 
-/* Contenido Derecho */
+/* Contenido Abajo */
 .down-content {
+  height: auto;
   flex: 1;
   padding: 30px;
+  padding-bottom: 60px;
   background: rgba(0, 0, 0, 0.8);
   color: #fff6ed;
 }
@@ -371,14 +403,14 @@ body {
 /* Botón flotante para volver arriba */
 .scroll-to-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #b42f2f;
-  color: black;
+  bottom: 40px;
+  right: 40px;
+  background-color: black;
+  color: #b42f2f;
   border: none;
   border-radius: 50%;
   padding: 15px;
-  font-size: 18px;
+  font-size: 30px;
   display: none;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -454,6 +486,30 @@ body {
   line-height: 1;
 }
 
+/*Style de la tabla de fechas importantes*/
+
+.important-dates{
+  text-align: center;
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #fff6ed;
+      padding: 8px;
+      text-align: left;
+      color: #fff6ed;
+    }
+    th {
+      text-align: center;
+      background-color: #b42f2f;
+    }
+    td {
+      text-align: center;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .archivo-grid {
@@ -473,14 +529,10 @@ body {
   .main-title {
     flex-direction: column;
     gap: 10px;
-  }
-
-  .announcement-button {
-    font-size: 1.2em;
-    padding: 15px 20px;
-  }
+  }  
 
   .footer-content {
+
     flex-direction: column;
     gap: 10px;
   }
