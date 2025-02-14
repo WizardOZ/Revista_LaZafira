@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-  <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
-  <title>La Zafira</title>
-  <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/styles_convocatorias.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
+    <title>La Zafira</title>
+    <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles_convocatorias.css" />
+    <link rel="stylesheet" href="css/styles_formulario.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
     <script>
@@ -22,7 +23,7 @@
                     const script = document.createElement('script');
                     script.innerHTML = `
                         // Crear el parámetro "valor" y guardarlo en el input "tipo"
-                        const valor ="texto";
+                        const valor ="portada";
                         document.getElementById('tipo').value = valor;
                         console.log(valor);
 
@@ -58,7 +59,7 @@
             </tr>
         </table>
     </header>
-    <div class="content">
+    <div class="content" id="content">
 
         <div class="convocatoria-container">
             <!-- Imagen de la convocatoria -->
@@ -72,7 +73,7 @@
                 <h2>Convocatoria Portadas I</h2>
                 <p>Febrero (2025)</p>
 
-                <button onclick="cargarContenido('formulario_envios.html?valor=texto')" class="envios-button">
+                <button onclick="cargarContenido('formulario_envios.html?valor=portada')" class="envios-button">
                     Participar
                 </button>
             </div>
