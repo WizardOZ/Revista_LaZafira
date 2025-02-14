@@ -18,7 +18,6 @@ body {
 
 /* Header */
 header {
-  background-image: url("css/img/cabecera.png");
   background-color: black;
   color: #fff6ed;
   padding: 15px;
@@ -270,6 +269,22 @@ footer {
   line-height: 1;
 }
 
+/* Estilo para el mensaje de espera */
+.loading-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    padding-top: 20%;
+    z-index: 1000;
+}
+
 
 /* General Reset */
 * {
@@ -299,7 +314,7 @@ body {
   flex: 1;
   overflow-y: auto;
   background: #fff6ed;
-  height: 2000px;
+  height: 1000px;
 }
 
 /* Contenido Abajo */
@@ -463,6 +478,137 @@ body {
   margin: 0;
   line-height: 1;
 }
+
+/*Style de la tabla de fechas importantes*/
+
+.important-dates {
+    text-align: center;
+}
+
+    .important-dates table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .important-dates th, .important-dates td {
+        border: 1px solid #fff6ed;
+        padding: 8px;
+        text-align: left;
+        color: #fff6ed;
+    }
+
+    .important-dates th {
+        text-align: center;
+        background-color: #b42f2f;
+    }
+
+    .important-dates td {
+        text-align: center;
+    }
+
+
+
+/* Estilo general de la tabla */
+.tabla-noticias {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff6ed; /* Fondo claro para el tablón de anuncios */
+    color: #333; /* Color de texto oscuro para mejorar la legibilidad */
+    font-family: 'Arial', sans-serif; /* Fuente moderna */
+    border-radius: 10px; /* Bordes redondeados para un toque más suave */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+}
+
+    /* Estilo para las celdas */
+    .tabla-noticias td {
+        padding: 20px;
+        vertical-align: top;
+        border-bottom: 1px solid #ddd; /* Separación entre filas con bordes suaves */
+    }
+
+    /* Estilo para el encabezado de la tabla */
+    h2 {
+        margin-bottom: 10px;
+        color: #b42f2f; /* Color de los encabezados, un tono azul suave */
+        font-weight: bold;
+        text-transform: uppercase; /* Hace que los títulos sean más destacados */
+        letter-spacing: 1px; /* Espaciado de letras para mayor énfasis */
+    }
+
+    /* Estilo para el texto dentro de las celdas */
+    pre {
+        font-family: 'Courier New', monospace; /* Fuente para el texto largo */
+        font-size: 16px;
+        white-space: pre-wrap; /* Asegura que el texto largo se ajuste dentro del contenedor */
+        line-height: 1.6;
+        color: #555; /* Color gris para el texto largo */
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+/* Estilo para los enlaces */
+.announcement-button {
+    text-decoration: none;
+    color: #b42f2f; /* Color azul suave para los enlaces */
+    background-color: transparent; /* Fondo transparente para un estilo limpio */
+    padding: 10px 20px;
+    border: 2px solid #b42f2f; /* Bordes de color azul para los botones */
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+    .announcement-button:hover {
+        background-color: #8c1d1d; /* Color de fondo al pasar el ratón */
+        color: #fff; /* Texto blanco cuando el botón se activa */
+        border-color: #4a90e2; /* El borde se mantiene igual al hacer hover */
+    }
+
+/* Estilo para la fecha de cierre */
+.tabla-noticias p {
+    font-size: 16px;
+    color: #888; /* Gris más suave para la fecha de cierre */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+.resaltado {
+    background-color: #ffcc00; /* Amarillo */
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+}
+
+.evento {
+    display: block;
+    font-size: 10px;
+    color: #333;
+    margin-top: 3px;
+}
+
+/* Mejorar la apariencia en dispositivos móviles */
+@media screen and (max-width: 600px) {
+    .tabla-noticias h2 {
+        font-size: 20px;
+    }
+
+    .tabla-noticias td {
+        padding: 10px;
+    }
+
+    .announcement-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {
