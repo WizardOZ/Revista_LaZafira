@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-  <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
-  <title>La Zafira</title>
-  <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/styles_convocatorias.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
+    <title>La Zafira</title>
+    <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles_convocatorias.css" />
+    <link rel="stylesheet" href="css/styles_formulario.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+    <script>
+        function cargarContenido(archivo) {
+            fetch(archivo)
+                .then(response => response.text())  // Convierte la respuesta en texto
+                .then(data => {
+                    const div = document.getElementById("content");
+                    div.innerHTML = data; // Inserta el contenido en el div
+                    // Ahora, para ejecutar el script insertado, creamos y lo insertamos manualmente
+                    const script = document.createElement('script');
+                    script.innerHTML = `
+                        // Crear el parámetro "valor" y guardarlo en el input "tipo"
+                        const valor ="texto";
+                        document.getElementById('tipo').value = valor;
+                        console.log(valor);
+
+                  `;
+                  div.appendChild(script); // Agregar el script al div
+              })
+              .catch(error => console.error("Error al cargar el contenido:", error));
+      }
+  </script>  
   <header>
     <table class="tabla-cabeza">
       <tr>
@@ -37,7 +59,7 @@
       </tr>
     </table>    
   </header>
-  <div class="content">
+  <div class="content" id="content">
       
     <div class="convocatoria-container">
         <!-- Imagen de la convocatoria -->
@@ -50,15 +72,10 @@
 
         <!-- Detalles de la convocatoria -->
         <div class="detalles-convocatoria">
-          <h2>Convocatoria Textos I</h2>
-          <p>Enero (2025)</p>
-
-          <a
-            href="formulario_envios.html?valor=texto"
-            class="envios-button"
-            target="_blank"
-            >Participar</a
-          >
+            <h2>Convocatoria Textos I</h2>
+            <p>Marzo (2025)</p>
+            <button onclick="cargarContenido('formulario_envios.html?valor=texto')"  class="envios-button"
+               >Participar</button>
         </div>
       </div>
 
@@ -107,8 +124,8 @@
 
   <footer>
     <div class="footer-content">
-      <div class="email-section">
-          <strong>Contacto:  </strong><a href="mailto:lazafirarevista@gmail.com">lazafirarevista@gmail.com</a>
+      <div class="contact-section">
+          <strong>Contacto:  </strong><a style="color: red;" href="mailto:lazafirarevista@gmail.com">lazafirarevista@gmail.com</a>
       </div>
       <span class="divider">|</span>
       <dl class="social-icons">
@@ -123,8 +140,13 @@
           </a>
         </dt>
         <dt>
-          <a href="https://www.facebook.com/profile.php?id=61566988883924&rdid=DJ0vNyozaHrKHcQS&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FZGxHuRBZzBTZ87CW%2F" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/profile.php" target="_blank" rel="noopener noreferrer">
             <img src="css/img/iconos_web_redes_Facebook.png" alt="Facebook" title="Facebook" />
+          </a>
+        </dt>
+        <dt>
+          <a href="https://www.youtube.com/@LaZafiraRevista" target="_blank" rel="noopener noreferrer">
+            <img src="css/img/iconos_web_redes_Youtube.png" alt="Youtube" title="Youtube"/>
           </a>
         </dt>
       </dl>

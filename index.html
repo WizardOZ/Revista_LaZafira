@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-  <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
+  <meta name="description"
+    content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
   <title>La Zafira</title>
-  <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
+  <link rel="shortcut icon" href="img/simbolo_lazafira.png">
   <link rel="stylesheet" href="css/styles.css" />
+
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
   <header>
+    <div>
+      <a href="index.html"><img id="header-logo" src="img/cabecera.png"></a>
+    </div>
     <table class="tabla-cabeza">
-      <tr>
-        <td><img id="header-logo" src="css/img/cabecera.png"></td>
-      </tr>
       <tr class="main-title">
         <td>
-          <a href="index.html" class="line">INICIO</a>
+          <a href="zafira.html" class="line">¿Quiénes sómos?</a>
         </td>
+        <td>
+          <a href="#convocatorias" class="line" id="convocatorias-link">Convocatorias</a>
+        </td>
+        <!--
         <td>
           <nav class="envios-container line">
               <a href="#" style="pointer-events: none;" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
@@ -29,95 +37,95 @@
               </ul>
           </nav>
         </td>
-        <td>
-          <a href="zafira.html" class="line">¿QUIÉNES SOMOS?</a>
-        </td>
+        -->
         <!--<a href="archivo.html" class="outline">ARCHIVO</a>-->
       </tr>
     </table>
-    
-    
   </header>
-
-  <div class="content">
-  <!-- Contenido Superior -->
+  <div class="main-container">
+    <!-- Contenido Superior -->
     <div class="up-content">
+      <div style="text-align: center" class="banner-container">
+        <div class="banner">
+          <h2>¡Bienvenidos!</h2>
+          <p>LaZafira, la revista de arte emergente, abre su convocatoria para el diseño de portada de su primer número,
+            que será lanzado en junio de 2025. Invitamos especialmente a artistas visuales, diseñadores y creadores
+            estudiantes universitarios de Andalucía y antiguos estudiantes que deseen participar en este proyecto. Las
+            propuestas podrán ser enviadas a través de esta plataforma durante el próximo mes. La obra seleccionada
+            aparecerá como portada de esta primera edición y se incluirá también en una de sus páginas interiores.</p>
+        </div>
+        <div class="video">
+          <video src="videos/Reel Convocatorias 3.mp4" autoplay loop muted width="300"></video>
+        </div>
+      </div>
 
-      <h1 class="highlight" align="center" style="text-decoration: underline;"> TABLÓN DE ANUNCIOS</h1>
-      <br>
-      <table class="tabla-noticias" align="center">
-        <tr>
-          <td>
-            <h2>BIENVENIDA</h2>
-            <br>
-            <p>
-              <strong>(Texto de ejemplo)</strong>
-              LaZafira, la revista de arte emergente, abre su convocatoria para el diseño de portada de su
-              primer número, que será lanzado en junio de 2025. Invitamos especialmente a artistas
-              visuales, diseñadores y creadores residentes en Andalucía que deseen participar en este
-              proyecto. Las propuestas podrán ser enviadas a través de esta plataforma durante el
-              próximo mes. La obra seleccionada aparecerá como portada de esta primera edición y se
-              incluirá también en una de sus páginas interiores.
-             </p>
-          </td>
-        </tr>
-      </table>
-      <br>
-      <br>
-      <table class="tabla-convocatorias">
-        <h1 class="highlight" align="center" style="text-decoration: underline;"> TABLÓN DE CONVOCATORIAS</h1>
-        <br>
-        <tr>
-          <td>
-              <h2><a href="obra.html" class="announcement-button">CONVOCATORIA DE OBRAS GRÁFICAS</a></h2>
-              <p>(Cierre: 01 MARZO 2025)</p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h2><a href="portada.html" class="announcement-button">CONVOCATORIA DE PORTADAS</a></h2>
-              <p>(Cierre: 01 MARZO 2025)</p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h2><a href="texto.html" class="announcement-button">CONVOCATORIA DE TEXTOS CRÍTICOS</a></h2>
-              <p>(Cierre: 01 MARZO 2025)</p>
-          </td>
-        </tr>
-      </table>
+      <div class="announcement-section" id="convocatorias">
+        <h2 class="highlight">Convocatorias</h2>
+        <div class="announcement-container">
+          <div class="announcement-item">
+            <div class="imagen-convocatoria">
+              <a href="portada.html">
+                <img src="img/CARTEL CONVOCATORIA ZAFIRA-portadas.png" alt="Cartel de la convocatoria" />
+                <span class="extra-info">
+                  <h3>+ Info</h3>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="announcement-item">
+            <div class="imagen-convocatoria">
+              <a href="texto.html">
+                <img src="img/CARTEL CONVOCATORIA ZAFIRA-textos.png" alt="Cartel de la convocatoria" />
+                <span class="extra-info">
+                  <h3>+ Info</h3>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="announcement-item">
+            <div class="imagen-convocatoria">
+              <a href="obra.html">
+                <img src="img/CARTEL CONVOCATORIA ZAFIRA-obras.png" alt="Cartel de la convocatoria" />
+                <span class="extra-info">
+                  <h3>+ Info</h3>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
     <!-- Contenido Inferior -->
     <div class="down-content">
-      <div class="calendar-container">
-        <h2><u>CALENDARIO</u></h2>
-        <br>
-        <div class="calendar-header">
-          <button class="prev-month">&lt;</button>
-          <button class="current-month">Hoy</button>
-          <h3 class="month-year"></h3>
-          <button class="next-month">&gt;</button>
+      <div class="imagen-calendario">
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <button class="prev-month">&lt;</button>
+            <button class="current-month">Hoy</button>
+            <h3 class="month-year"></h3>
+            <button class="next-month">&gt;</button>
+          </div>
+          <table class="calendar">
+            <thead>
+              <tr>
+                <th>Dom</th>
+                <th>Lun</th>
+                <th>Mar</th>
+                <th>Mié</th>
+                <th>Jue</th>
+                <th>Vie</th>
+                <th>Sáb</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-        <table class="calendar">
-          <thead>
-            <tr>
-              <th>Dom</th>
-              <th>Lun</th>
-              <th>Mar</th>
-              <th>Mié</th>
-              <th>Jue</th>
-              <th>Vie</th>
-              <th>Sáb</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        
       </div>
+     
       <br>
       <div class="important-dates">
-        <h2><u>FECHAS RELEVANTES</u></h2>
         <br>
         <table id="dataTable">
           <thead>
@@ -131,36 +139,42 @@
         </table>
       </div>
     </div>
+    <button class="scroll-to-top" aria-label="Volver arriba">↑</button>
+  </div>
   </div>
   <footer>
     <div class="footer-content">
       <div class="contact-section">
-          <strong>Contacto:  </strong><a style="color: red;" href="mailto:lazafirarevista@gmail.com">lazafirarevista@gmail.com</a>
+        <strong>Contacto: </strong><a style="color: red;"
+          href="mailto:lazafirarevista@gmail.com">lazafirarevista@gmail.com</a>
       </div>
       <span class="divider">|</span>
       <dl class="social-icons">
         <dt>
           <a href="https://x.com/RevistaLaZafira" target="_blank" rel="noopener noreferrer">
-            <img src="css/img/iconos_web_redes_X.png" alt="Twitter" title="Twitter" />
+            <img src="img/iconos_web_redes_X.svg" alt="Twitter" title="Twitter" />
           </a>
         </dt>
         <dt>
           <a href="https://www.instagram.com/revistalazafira" target="_blank" rel="noopener noreferrer">
-            <img src="css/img/iconos_web_redes_Instagram.png" alt="Instagram" title="Instagram" />
+            <img src="img/iconos_web_redes_Instagram.svg" alt="Instagram" title="Instagram" />
           </a>
         </dt>
         <dt>
           <a href="https://www.facebook.com/profile.php" target="_blank" rel="noopener noreferrer">
-            <img src="css/img/iconos_web_redes_Facebook.png" alt="Facebook" title="Facebook" />
+            <img src="img/iconos_web_redes_Facebook.svg" alt="Facebook" title="Facebook" />
+          </a>
+        </dt>
+        <dt>
+          <a href="https://www.youtube.com/@LaZafiraRevista" target="_blank" rel="noopener noreferrer">
+            <img src="img/iconos_web_redes_YouTube.svg" alt="Youtube" title="Youtube" />
           </a>
         </dt>
       </dl>
     </div>
   </footer>
-
-  <button class="scroll-to-top" aria-label="Volver arriba">↑</button>
-
   <script src="js/calendar.js"></script>
-   
+  <script src="js/main.js"></script>
 </body>
+
 </html>

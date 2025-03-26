@@ -1,99 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-  <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
-  <title>La Zafira</title>
-  <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/styles_convocatorias.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="La Zafira - Revista cultural con convocatorias abiertas. Explora nuestras secciones de texto, portada y obra gráfica." />
+    <title>La Zafira</title>
+    <link rel="shortcut icon" href="css/img/simbolo_lazafira.png">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles_convocatorias.css" />
+    <link rel="stylesheet" href="css/styles_formulario.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <table class="tabla-cabeza">
-      <tr>
-        <td><img id="header-logo" src="css/img/cabecera.png"></td>
-      </tr>
-      <tr class="main-title">
-        <td>
-          <a href="index.html" class="line">INICIO</a>
-        </td>
-        <td>
-          <nav class="envios-container line">
-              <a href="#" style="pointer-events: none;" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="texto.html" role="menuitem">Texto</a></li>
-                <li><a href="portada.html" role="menuitem">Portada</a></li>
-                <li><a href="obra.html" role="menuitem">Obra Gráfica</a></li>
-              </ul>
-          </nav>
-        </td>
-        <td>
-          <a href="zafira.html" class="line">¿QUIÉNES SOMOS?</a>
-        </td>
-        <!--<a href="archivo.html" class="outline">ARCHIVO</a>-->
-      </tr>
-    </table>    
-  </header>
-  <div class="content">
-      
-    <div class="convocatoria-container">
-        <!-- Imagen de la convocatoria -->
-        <div class="imagen-convocatoria">
-          <img
-            src="css/img/CARTEL CONVOCATORIA ZAFIRA-portadas.png"
-            alt="Cartel de la convocatoria"
-          />
+    <script>
+        function cargarContenido(archivo) {
+            fetch(archivo)
+                .then(response => response.text())  // Convierte la respuesta en texto
+                .then(data => {
+                    const div = document.getElementById("content");
+                    div.innerHTML = data; // Inserta el contenido en el div
+                    // Ahora, para ejecutar el script insertado, creamos y lo insertamos manualmente
+                    const script = document.createElement('script');
+                    script.innerHTML = `
+                        // Crear el parámetro "valor" y guardarlo en el input "tipo"
+                        const valor ="portada";
+                        document.getElementById('tipo').value = valor;
+                        console.log(valor);
+
+                  `;
+                  div.appendChild(script); // Agregar el script al div
+              })
+              .catch(error => console.error("Error al cargar el contenido:", error));
+      }
+    </script>
+    <header>
+        <table class="tabla-cabeza">
+            <tr>
+                <td><img id="header-logo" src="css/img/cabecera.png"></td>
+            </tr>
+            <tr class="main-title">
+                <td>
+                    <a href="index.html" class="line">INICIO</a>
+                </td>
+                <td>
+                    <nav class="envios-container line">
+                        <a href="#" style="pointer-events: none;" class="line" aria-haspopup="true" aria-expanded="false">CONVOCATORIAS</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="texto.html" role="menuitem">Texto</a></li>
+                            <li><a href="portada.html" role="menuitem">Portada</a></li>
+                            <li><a href="obra.html" role="menuitem">Obra Gráfica</a></li>
+                        </ul>
+                    </nav>
+                </td>
+                <td>
+                    <a href="zafira.html" class="line">¿QUIÉNES SOMOS?</a>
+                </td>
+                <!--<a href="archivo.html" class="outline">ARCHIVO</a>-->
+            </tr>
+        </table>
+    </header>
+    <div class="content" id="content">
+
+        <div class="convocatoria-container">
+            <!-- Imagen de la convocatoria -->
+            <div class="imagen-convocatoria">
+                <img src="css/img/CARTEL CONVOCATORIA ZAFIRA-portadas.png"
+                     alt="Cartel de la convocatoria" />
+            </div>
+
+            <!-- Detalles de la convocatoria -->
+            <div class="detalles-convocatoria">
+                <h2>Convocatoria Portadas I</h2>
+                <p>Marzo (2025)</p>
+
+                <button onclick="cargarContenido('formulario_envios.html?valor=portada')" class="envios-button">
+                    Participar
+                </button>
+            </div>
         </div>
 
-        <!-- Detalles de la convocatoria -->
-        <div class="detalles-convocatoria">
-          <h2>Convocatoria Portadas I</h2>
-          <p>Enero - Febrero (2025)</p>
+        <!-- Descripción detallada -->
+        <p class="descripcion-convocatoria">
+        <b>¡RECORDATORIO!</b></br></br>
 
-          <a
-            href="formulario_envios.html?valor=portada"
-            class="envios-button"
-            target="_blank"
-            >Participar</a
-          >
-        </div>
-      </div>
+        Recordamos que la convocatoria de portada de la revista se encuentra abierta todavía.</br>
+        Siempre y cuando se cumplan los requisitos necesarios que os diremos a continuación, es bienvenida cualquier</br>
+        propuesta que se envíe al correo de la revista siempre y cuando sea un artista que pertenece o ha pertenecido a una universidad de Andalucía</br>
+        y en plazo (20 Marzo).</br></br>
 
-      <!-- Descripción detallada -->
-      <pre class="descripcion-convocatoria">
-        <b>¡RECORDATORIO!</b>
+        A continuación, los requisitos para la portada:</br></br>
 
-        Recordamos que la convocatoria de portada de la revista se encuentra abierta todavía.
-        Siempre y cuando se cumplan los requisitos necesarios que os diremos a continuación, es bienvenida cualquier 
-        propuesta que se envíe al correo de la revista siempre y cuando sea de un artista de Andalucia 
-        y en plazo (28 de febrero). 
+        <b>Características clave para participar</b></br></br>
 
-        A continuación, los requisitos para la portada:
+        ✔ Tamaño: A4 (210x297 mm)</br></br>
 
-        <b>Características clave para participar</b>
-
-        ✔ Tamaño: A4 (210x197 mm)
-
-        ✔ Resolucion mínima: 300ppp
+        ✔ Resolucion mínima: 300ppp</br></br>
         
-        ✔ Formatos: JPG, PNG, PDF
+        ✔ Formatos: JPG, PNG, PDF</br></br>
         
-        ✔ Libertad para usar cualquier técnica
+        ✔ Libertad para usar cualquier técnica</br></br>
         
-        ✔ El diseño no debe de haber sido premiado ni difundido anteriormente.
-      </pre>
+        ✔ El diseño no debe de haber sido premiado ni difundido anteriormente.</br></br>
+      </p>
 
 
-  </div>
-  <br>
+    </div>
+    <br>
 
-  <footer>
+    <footer>
     <div class="footer-content">
-      <div class="email-section">
-          <strong>Contacto:  </strong><a href="mailto:lazafirarevista@gmail.com">lazafirarevista@gmail.com</a>
+      <div class="contact-section">
+          <strong>Contacto:  </strong><a style="color: red;" href="mailto:lazafirarevista@gmail.com">lazafirarevista@gmail.com</a>
       </div>
       <span class="divider">|</span>
       <dl class="social-icons">
@@ -108,14 +125,19 @@
           </a>
         </dt>
         <dt>
-          <a href="https://www.facebook.com/profile.php?id=61566988883924&rdid=DJ0vNyozaHrKHcQS&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FZGxHuRBZzBTZ87CW%2F" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/profile.php" target="_blank" rel="noopener noreferrer">
             <img src="css/img/iconos_web_redes_Facebook.png" alt="Facebook" title="Facebook" />
+          </a>
+        </dt>
+        <dt>
+          <a href="https://www.youtube.com/@LaZafiraRevista" target="_blank" rel="noopener noreferrer">
+            <img src="css/img/iconos_web_redes_Youtube.png" alt="Youtube" title="Youtube"/>
           </a>
         </dt>
       </dl>
     </div>
   </footer>
 
-  <button class="scroll-to-top" aria-label="Volver arriba">↑</button>
+    <button class="scroll-to-top" aria-label="Volver arriba">↑</button>
 </body>
 </html>
