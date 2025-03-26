@@ -1,85 +1,131 @@
 const calendar = (() => {
-  const date = new Date();
-  let currentMonth = date.getMonth();
-  let currentYear = date.getFullYear();
+    const date = new Date();
+    let currentMonth = date.getMonth();
+    let currentYear = date.getFullYear();
 
-  const today = {
-    day: date.getDate(),
-    month: date.getMonth(),
-    year: date.getFullYear(),
-  };
+    const today = {
+        day: date.getDate(),
+        month: date.getMonth(),
+        year: date.getFullYear(),
+    };
 
-  const monthYearText = document.querySelector(".month-year");
-  const tbody = document.querySelector(".calendar tbody");
+    const monthYearText = document.querySelector(".month-year");
+    const tbody = document.querySelector(".calendar tbody");
 
-  const renderCalendar = () => {
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const renderCalendar = () => {
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    tbody.innerHTML = "";
-    const monthName = new Date(currentYear, currentMonth).toLocaleString("es", {
-      month: "long",
-    });
-    monthYearText.textContent = `${monthName.charAt(0).toUpperCase() + monthName.slice(1)} ${currentYear}`;
+        tbody.innerHTML = "";
+        const monthName = new Date(currentYear, currentMonth).toLocaleString("es", {
+            month: "long",
+        });
+        monthYearText.textContent = `${monthName.charAt(0).toUpperCase() + monthName.slice(1)} ${currentYear}`;
 
-    let row = document.createElement("tr");
+        let row = document.createElement("tr");
 
-    // Añadir celdas vacías al principio de la primera fila
-    for (let i = 0; i < firstDay; i++) {
-      row.appendChild(document.createElement("td"));
-    }
+        // Añadir celdas vacías al principio de la primera fila
+        for (let i = 0; i < firstDay; i++) {
+            row.appendChild(document.createElement("td"));
+        }
 
-    for (let day = 1; day <= daysInMonth; day++) {
-      if (row.children.length === 7) {
+        for (let day = 1; day <= daysInMonth; day++) {
+            if (row.children.length === 7) {
+                tbody.appendChild(row);
+                row = document.createElement("tr");
+            }
+
+            const cell = document.createElement("td");
+            cell.textContent = day;
+
+            // Asignar la fecha en formato YYYY-MM-DD
+            let formattedDate = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+            cell.dataset.fecha = formattedDate;
+
+            // Marcar el día actual
+            if (day === today.day && currentMonth === today.month && currentYear === today.year) {
+                cell.classList.add("current-day");
+            }
+
+            row.appendChild(cell);
+        }
+
+        // Añadir celdas vacías al final de la última fila
+        while (row.children.length < 7) {
+            row.appendChild(document.createElement("td"));
+        }
+
         tbody.appendChild(row);
-        row = document.createElement("tr");
-      }
 
-      const cell = document.createElement("td");
-      cell.textContent = day;
+        // Llamar a la función para resaltar fechas después de renderizar
+        cargarYResaltarFechas();
+    };
 
-      // Marcar el día actual
-      if (
-        day === today.day &&
-        currentMonth === today.month &&
-        currentYear === today.year
-      ) {
-        cell.classList.add("current-day");
-      }
+    document.querySelector(".prev-month").addEventListener("click", () => {
+        currentMonth = (currentMonth - 1 + 12) % 12;
+        if (currentMonth === 11) currentYear--;
+        renderCalendar();
+    });
 
-      row.appendChild(cell);
-    }
+    document.querySelector(".next-month").addEventListener("click", () => {
+        currentMonth = (currentMonth + 1) % 12;
+        if (currentMonth === 0) currentYear++;
+        renderCalendar();
+    });
 
-    // Añadir celdas vacías al final de la última fila
-    while (row.children.length < 7) {
-      row.appendChild(document.createElement("td"));
-    }
+    document.querySelector(".current-month").addEventListener("click", () => {
+        currentMonth = date.getMonth();
+        currentYear = date.getFullYear();
+        renderCalendar();
+    });
 
-    tbody.appendChild(row);
-  };
-
-  document.querySelector(".prev-month").addEventListener("click", () => {
-    currentMonth = (currentMonth - 1 + 12) % 12;
-    if (currentMonth === 11) currentYear--;
-    renderCalendar();
-  });
-
-  document.querySelector(".next-month").addEventListener("click", () => {
-    currentMonth = (currentMonth + 1) % 12;
-    if (currentMonth === 0) currentYear++;
-    renderCalendar();
-  });
-
-  document.querySelector(".current-month").addEventListener("click", () => {
-    currentMonth = date.getMonth();
-    currentYear = date.getFullYear();
-    renderCalendar();
-  });
-
-  return { init: renderCalendar };
+    return { init: renderCalendar };
 })();
 
 calendar.init();
+
+// Función para cargar y resaltar fechas desde fechas.txt
+function cargarYResaltarFechas() {
+    fetch("fechas.txt")
+        .then(response => response.text())
+        .then(data => {
+            let fechasEventos = {};
+
+            // Convertir el contenido del txt en un objeto { "YYYY-MM-DD": "Evento" }
+            let lineas = data.trim().split("\n");
+            lineas.forEach(linea => {
+                let partes = linea.trim().split(" ");
+                if (partes.length >= 4) {
+                    let dia = partes[0];
+                    let mes = partes[1];
+                    let año = partes[2];
+                    let descripcion = partes.slice(3).join(" "); // Unir el resto como descripción
+                    let fechaISO = `${año}-${mes.padStart(2, "0")}-${dia.padStart(2, "0")}`; // Formato YYYY-MM-DD
+
+                    fechasEventos[fechaISO] = descripcion;
+                }
+            });
+
+            // Resaltar las fechas en el calendario
+            resaltarFechas(fechasEventos);
+        })
+        .catch(error => console.error("Error al cargar las fechas:", error));
+}
+
+function resaltarFechas(fechasEventos) {
+    let celdas = document.querySelectorAll(".calendar td[data-fecha]");
+
+    celdas.forEach(celda => {
+        let fecha = celda.dataset.fecha; // Formato "YYYY-MM-DD" en cada celda
+
+        if (fechasEventos[fecha]) {
+            celda.classList.add("resaltado");
+            celda.title = fechasEventos[fecha]; // Mostrar descripción como tooltip
+            celda.innerHTML += `<br><span class="evento">${fechasEventos[fecha]}</span>`; // Mostrar dentro de la celda
+        }
+    });
+}
+
 
 
 // Mostrar botón para volver arriba
@@ -97,47 +143,49 @@ scrollToTopButton.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+
+
 //Script encargado de leer e interpretar las fechas importantes
 
- const dataTableBody = document.querySelector('#dataTable tbody');
+const dataTableBody = document.querySelector('#dataTable tbody');
 
-    // Ruta del archivo .txt (debe estar alojado en el servidor)
-    const fileUrl = 'fechas.txt'; // Cambia a la URL donde esté alojado el archivo
+// Ruta del archivo .txt (debe estar alojado en el servidor)
+const fileUrl = 'fechas.txt'; // Cambia a la URL donde esté alojado el archivo
 
-    fetch(fileUrl)
-      .then(response => {
+fetch(fileUrl)
+    .then(response => {
         if (!response.ok) {
-          throw new Error('No se pudo cargar el archivo.');
+            throw new Error('No se pudo cargar el archivo.');
         }
         return response.text();
-      })
-      .then(content => {
+    })
+    .then(content => {
         const lines = content.split('\n'); // Divide el contenido en líneas
         const parsedData = [];
 
         lines.forEach((line) => {
-          const columns = line.trim().split(/\s+/); // Divide por espacios o tabulaciones
-          if (columns.length >= 4) {
-            const [day, month, year, ...textParts] = columns;
-            const text = textParts.join(' '); // Reconstruye el texto si contiene espacios
-            const date = new Date(`${year}-${month}-${day}`);
-            parsedData.push({ date, text });
-          }
+            const columns = line.trim().split(/\s+/); // Divide por espacios o tabulaciones
+            if (columns.length >= 4) {
+                const [day, month, year, ...textParts] = columns;
+                const text = textParts.join(' '); // Reconstruye el texto si contiene espacios
+                const date = new Date(`${year}-${month}-${day}`);
+                parsedData.push({ date, text });
+            }
         });
 
         populateTable(parsedData);
-      })
-      .catch(error => console.error('Error:', error));
+    })
+    .catch(error => console.error('Error:', error));
 
-    function populateTable(data) {
-      const today = new Date(); // Fecha actual
-      dataTableBody.innerHTML = ''; // Limpia el contenido previo de la tabla
+function populateTable(data) {
+    const today = new Date(); // Fecha actual
+    dataTableBody.innerHTML = ''; // Limpia el contenido previo de la tabla
 
-      data.forEach((item) => {
+    data.forEach((item) => {
         const row = document.createElement('tr');
         const formattedDate = `${item.date.getDate().toString().padStart(2, '0')}/` +
-                              `${(item.date.getMonth() + 1).toString().padStart(2, '0')}/` +
-                              `${item.date.getFullYear()}`;
+            `${(item.date.getMonth() + 1).toString().padStart(2, '0')}/` +
+            `${item.date.getFullYear()}`;
 
         const status = item.date < today ? 'Finalizado' : 'Abierta';
 
@@ -147,5 +195,7 @@ scrollToTopButton.addEventListener("click", () => {
           <td>${status}</td>
         `;
         dataTableBody.appendChild(row);
-      });
-    }
+    });
+}
+
+
