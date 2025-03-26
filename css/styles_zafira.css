@@ -1,0 +1,162 @@
+
+
+
+/* Contenedor de la convocatoria */
+.convocatoria-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #b42f2f;
+  background-color: white;
+}
+
+.imagen-convocatoria img {
+  width: 390px; /* Aumentamos el tamaño de la imagen un 30% */
+  border-radius: 8px;
+}
+
+/* Detalles de la convocatoria */
+.detalles-convocatoria {
+  text-align: left;
+  font-size: 1.56em; /* Aumentamos el tamaño de la fuente un 30% */
+}
+
+.detalles-convocatoria h2 {
+  font-size: 2.6em; /* Aumentamos el tamaño del subtítulo un 30% */
+  margin-bottom: 13px;
+}
+
+.detalles-convocatoria p {
+  margin: 13px 0;
+}
+
+.envios-button {
+  display: inline-block;
+  margin: 13px 0;
+  padding: 13px 26px; /* Aumentamos el padding del botón un 30% */
+  background-color: #fff6ed;
+  color: black;
+  border: 2px solid black;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1.2em; /* Aumentamos el tamaño de la fuente del botón */
+}
+
+.envios-button:hover {
+  background-color: black;
+  color: #b42f2f;
+}
+
+/* Enlace PDF */
+.pdf-link {
+  color: white;
+  text-decoration: underline;
+  font-size: 1.56em; /* Aumentamos el tamaño de la fuente del enlace un 30% */
+  margin: 26px 0;
+}
+
+.pdf-link:hover {
+  color: #ccc;
+}
+
+/* Sección de descripción detallada */
+.descripcion-convocatoria {
+  max-width: 1300px;
+  padding-left: 30px;
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  text-align: justify; /* Alineación justificada */
+  font-family: Arial, sans-serif;
+  font-size: 25px; /* Tamaño de fuente ligeramente más grande */
+  line-height: 1.8; /* Mejora aún más la legibilidad */
+  background-color: white;
+}
+
+.descripcion-convocatoria p {
+  margin-bottom: 26px; /* Aumentamos el espacio entre párrafos un 30% */
+}
+
+/*Estilos boton Inicio*/
+
+.inicio-button {
+  position: fixed;
+  top: 20px; /* Distancia desde la parte superior de la ventana */
+  left: 20px; /* Distancia desde el borde izquierdo de la ventana */
+  background-color: #b42f2f; /* Fondo blanco */
+  color: whitesmoke; /* Color del texto */
+  border: 2px; /* Borde gris oscuro */
+  padding: 8px 15px; /* Espaciado interno */
+  font-size: 1em; /* Tamaño del texto */
+  font-weight: bold;
+  border-radius: 5px; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado */
+  cursor: pointer;
+  z-index: 1000; /* Asegura que el botón esté en el frente */
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.inicio-button:hover {
+  background-color: #cac6c6; /* Fondo oscuro en hover */
+  color: white; /* Texto en blanco en hover */
+}
+
+@media (max-width: 768px) {
+
+ 
+
+
+  /* Contenedor de la convocatoria */
+  .convocatoria-container {
+      flex-direction: column; /* Cambia a una columna para mejor visualización en móviles */
+      gap: 20px;
+      padding: 15px; /* Reduce el padding */
+  }
+
+  .imagen-convocatoria img {
+      width: 100%; /* Ajusta la imagen para ocupar todo el ancho del contenedor */
+      height: auto; /* Mantén la proporción */
+  }
+
+  /* Detalles de la convocatoria */
+  .detalles-convocatoria {
+      font-size: 1.2em; /* Reduce el tamaño de la fuente */
+      text-align: center; /* Centra el texto para mejor visualización */
+  }
+
+  .detalles-convocatoria h2 {
+      font-size: 2em;
+  }
+
+  .envios-button {
+      font-size: 1em;
+      padding: 10px 20px; /* Ajusta el padding del botón */
+      margin: 10px auto; /* Centra el botón */
+  }
+
+  /* Enlace PDF */
+  .pdf-link {
+      font-size: 1.2em;
+      margin: 20px 0;
+  }
+
+  /* Sección de descripción detallada */
+  .descripcion-convocatoria {
+      font-size: 1.1em; /* Reduce el tamaño de la fuente */
+      margin-top: 20px;
+      line-height: 1.6; /* Reduce el interlineado */
+  }
+
+  .descripcion-convocatoria p {
+      margin-bottom: 20px;
+  }
+
+  /* Botón de Inicio */
+  .inicio-button {
+      top: 10px; /* Reduce la distancia desde la parte superior */
+      left: 10px; /* Reduce la distancia desde la parte izquierda */
+      font-size: 0.9em; /* Reduce el tamaño del texto */
+      padding: 6px 12px; /* Reduce el padding */
+      border-radius: 4px;
+  }
+}

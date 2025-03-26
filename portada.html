@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/styles_formulario.css" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 </head>
-<body style="height: 2000px;">
+<body>
     <script>
         function cargarContenido(archivo) {
             fetch(archivo)
@@ -23,7 +23,7 @@
                     const script = document.createElement('script');
                     script.innerHTML = `
                         // Crear el parámetro "valor" y guardarlo en el input "tipo"
-                        const valor ="obra";
+                        const valor ="portada";
                         document.getElementById('tipo').value = valor;
                         console.log(valor);
 
@@ -64,51 +64,44 @@
         <div class="convocatoria-container">
             <!-- Imagen de la convocatoria -->
             <div class="imagen-convocatoria">
-                <img src="css/img/CARTEL CONVOCATORIA ZAFIRA-obras.png"
+                <img src="css/img/CARTEL CONVOCATORIA ZAFIRA-portadas.png"
                      alt="Cartel de la convocatoria" />
             </div>
 
             <!-- Detalles de la convocatoria -->
             <div class="detalles-convocatoria">
-                <h2>Convocatoria Obra Gráfica I</h2>
+                <h2>Convocatoria Portadas I</h2>
                 <p>Marzo (2025)</p>
 
-                <button onclick="cargarContenido('formulario_envios.html?valor=obra_grafica')" class="envios-button">
+                <button onclick="cargarContenido('formulario_envios.html?valor=portada')" class="envios-button">
                     Participar
                 </button>
             </div>
         </div>
 
         <!-- Descripción detallada -->
-        <pre class="descripcion-convocatoria">
-        <b>¡RECORDATORIO!</b>
+        <p class="descripcion-convocatoria">
+        <b>¡RECORDATORIO!</b></br></br>
 
-        Recordamos que la convocatoria para la entrega de obras de toda índole, sigue abierta hasta (fecha). Pueden 
-        participar artistas de toda la comunidad autónoma de Andalucía que hayan pertenecido o pertenezcan a una universidad de Andalucía (Rellenar formulario).  
-            
-        Por otro lado, respecto a la evaluación de las obras, será a través de un jurado de expertos en la materia, 
-        sean esculturas, lienzos o cualquier tipo de obra que cumpla los siguientes requisitos.
+        Recordamos que la convocatoria de portada de la revista se encuentra abierta todavía.</br>
+        Siempre y cuando se cumplan los requisitos necesarios que os diremos a continuación, es bienvenida cualquier</br>
+        propuesta que se envíe al correo de la revista siempre y cuando sea un artista que pertenece o ha pertenecido a una universidad de Andalucía</br>
+        y en plazo (20 Marzo).</br></br>
 
-        <b>Características clave para participar</b>
+        A continuación, los requisitos para la portada:</br></br>
 
-        ✔ 5 imágenes de la obra, calidad mínima 300 ppp 
+        <b>Características clave para participar</b></br></br>
 
-        ✔ Envío de imágenes en formato JPG o PNG 
+        ✔ Tamaño: A4 (210x297 mm)</br></br>
 
-        ✔ Datos del autor
-
-        ✔ Título de la obra y fecha de realización 
-
-        ✔ Ficha técnica de la obra: Técnica, dimensiones, materiales.
-
-        ✔ Texto: Breve descripción de la trayectoria del artista y un texto, con un máximo de 150 palabras, 
-            describiendo la obra y su proceso creativo. Archivo en PDF 
-
-        ✔ Contacto: Número de teléfono y correo del artista. 
-
-        Declaración originalidad y derechos de imagen: El autor debe certificar que la obra enviada es original 
-        y no es plagiada y autorizar su publicación en la revista.
-      </pre>
+        ✔ Resolucion mínima: 300ppp</br></br>
+        
+        ✔ Formatos: JPG, PNG, PDF</br></br>
+        
+        ✔ Libertad para usar cualquier técnica</br></br>
+        
+        ✔ El diseño no debe de haber sido premiado ni difundido anteriormente.</br></br>
+      </p>
 
 
     </div>

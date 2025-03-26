@@ -55,8 +55,8 @@ main{
     margin-top: 5px;
 }
 
-/* BotÃ³n de envÃ­o */
-button {
+/* Boton de envio */
+ .form-button {
     background-color: #A63E3E;
     color: white;
     padding: 12px 25px;
@@ -65,10 +65,10 @@ button {
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* BotÃ³n ocupa todo el ancho */
+    width: 100%; /* Boton ocupa todo el ancho */
 }
 
-button:hover {
+.form-button button:hover {
     background-color: #7d2929;
 }
 
@@ -135,7 +135,7 @@ input::file-selector-button{
     }
 
     /* BotÃ³n de envÃ­o */
-    button {
+    .form-button button {
         padding: 10px 20px; /* Ajusta el padding del botÃ³n */
         font-size: 1.1em; /* Reduce el tamaÃ±o de la fuente */
     }
