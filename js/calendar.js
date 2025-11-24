@@ -12,6 +12,11 @@ const calendar = (() => {
     const monthYearText = document.querySelector(".month-year");
     const tbody = document.querySelector(".calendar tbody");
 
+    // Asegurarnos de que solo se ejecuta en la página del calendario
+    if (!tbody) {
+        return { init: () => {} }; // No hacer nada si no hay calendario
+    }
+
     const renderCalendar = () => {
         const firstDay = new Date(currentYear, currentMonth, 1).getDay();
         const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -24,7 +29,6 @@ const calendar = (() => {
 
         let row = document.createElement("tr");
 
-        // Añadir celdas vacías al principio de la primera fila
         for (let i = 0; i < firstDay; i++) {
             row.appendChild(document.createElement("td"));
         }
@@ -37,12 +41,9 @@ const calendar = (() => {
 
             const cell = document.createElement("td");
             cell.textContent = day;
-
-            // Asignar la fecha en formato YYYY-MM-DD
             let formattedDate = `${currentYear}-${String(currentMonth + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
             cell.dataset.fecha = formattedDate;
 
-            // Marcar el día actual
             if (day === today.day && currentMonth === today.month && currentYear === today.year) {
                 cell.classList.add("current-day");
             }
@@ -50,152 +51,91 @@ const calendar = (() => {
             row.appendChild(cell);
         }
 
-        // Añadir celdas vacías al final de la última fila
         while (row.children.length < 7) {
             row.appendChild(document.createElement("td"));
         }
 
         tbody.appendChild(row);
 
-        // Llamar a la función para resaltar fechas después de renderizar
-        cargarYResaltarFechas();
+        // ¡MEJORA! Ahora solo llama a la función de resaltar.
+        // La variable 'eventosDestacados' la crea 'index.php'
+        if (typeof eventosDestacados !== 'undefined') {
+            resaltarFechas(eventosDestacados);
+        }
     };
 
-    document.querySelector(".prev-month").addEventListener("click", () => {
-        currentMonth = (currentMonth - 1 + 12) % 12;
-        if (currentMonth === 11) currentYear--;
-        renderCalendar();
-    });
+    // --- Event Listeners para los botones ---
+    const prevButton = document.querySelector(".prev-month");
+    const nextButton = document.querySelector(".next-month");
+    const currentButton = document.querySelector(".current-month");
 
-    document.querySelector(".next-month").addEventListener("click", () => {
-        currentMonth = (currentMonth + 1) % 12;
-        if (currentMonth === 0) currentYear++;
-        renderCalendar();
-    });
+    if (prevButton) {
+        prevButton.addEventListener("click", () => {
+            currentMonth = (currentMonth - 1 + 12) % 12;
+            if (currentMonth === 11) currentYear--;
+            renderCalendar();
+        });
+    }
 
-    document.querySelector(".current-month").addEventListener("click", () => {
-        currentMonth = date.getMonth();
-        currentYear = date.getFullYear();
-        renderCalendar();
-    });
+    if (nextButton) {
+        nextButton.addEventListener("click", () => {
+            currentMonth = (currentMonth + 1) % 12;
+            if (currentMonth === 0) currentYear++;
+            renderCalendar();
+        });
+    }
+
+    if (currentButton) {
+        currentButton.addEventListener("click", () => {
+            currentMonth = date.getMonth();
+            currentYear = date.getFullYear();
+            renderCalendar();
+        });
+    }
 
     return { init: renderCalendar };
 })();
 
 calendar.init();
 
-// Función para cargar y resaltar fechas desde fechas.txt
-function cargarYResaltarFechas() {
-    fetch("fechas.txt")
-        .then(response => response.text())
-        .then(data => {
-            let fechasEventos = {};
-
-            // Convertir el contenido del txt en un objeto { "YYYY-MM-DD": "Evento" }
-            let lineas = data.trim().split("\n");
-            lineas.forEach(linea => {
-                let partes = linea.trim().split(" ");
-                if (partes.length >= 4) {
-                    let dia = partes[0];
-                    let mes = partes[1];
-                    let año = partes[2];
-                    let descripcion = partes.slice(3).join(" "); // Unir el resto como descripción
-                    let fechaISO = `${año}-${mes.padStart(2, "0")}-${dia.padStart(2, "0")}`; // Formato YYYY-MM-DD
-
-                    fechasEventos[fechaISO] = descripcion;
-                }
-            });
-
-            // Resaltar las fechas en el calendario
-            resaltarFechas(fechasEventos);
-        })
-        .catch(error => console.error("Error al cargar las fechas:", error));
-}
-
+// ¡MEJORA! Esta función ya no carga nada, solo resalta.
 function resaltarFechas(fechasEventos) {
     let celdas = document.querySelectorAll(".calendar td[data-fecha]");
 
     celdas.forEach(celda => {
-        let fecha = celda.dataset.fecha; // Formato "YYYY-MM-DD" en cada celda
+        let fecha = celda.dataset.fecha;
+        
+        // Limpiamos resaltado previo (para que funcione bien prev/next mes)
+        celda.classList.remove("resaltado");
+        celda.title = "";
+        const eventoSpan = celda.querySelector(".evento");
+        if (eventoSpan) {
+            eventoSpan.parentElement.innerHTML = eventoSpan.parentElement.firstChild.textContent;
+        }
 
+        // Aplicamos el resaltado si existe en nuestro objeto
         if (fechasEventos[fecha]) {
             celda.classList.add("resaltado");
-            celda.title = fechasEventos[fecha]; // Mostrar descripción como tooltip
-            celda.innerHTML += `<br><span class="evento">${fechasEventos[fecha]}</span>`; // Mostrar dentro de la celda
+            celda.title = fechasEventos[fecha];
+            celda.innerHTML += `<br><span class="evento">${fechasEventos[fecha]}</span>`;
         }
     });
 }
 
 
-
-// Mostrar botón para volver arriba
+// --- Tu código del botón "Scroll to Top" (con verificaciones) ---
 const scrollToTopButton = document.querySelector(".scroll-to-top");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 1) {
-    scrollToTopButton.style.display = "block";
+    if (scrollToTopButton) scrollToTopButton.style.display = "block";
   } else {
-    scrollToTopButton.style.display = "none";
+    if (scrollToTopButton) scrollToTopButton.style.display = "none";
   }
 });
 
-scrollToTopButton.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-
-
-//Script encargado de leer e interpretar las fechas importantes
-
-const dataTableBody = document.querySelector('#dataTable tbody');
-
-// Ruta del archivo .txt (debe estar alojado en el servidor)
-const fileUrl = 'fechas.txt'; // Cambia a la URL donde esté alojado el archivo
-
-fetch(fileUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('No se pudo cargar el archivo.');
-        }
-        return response.text();
-    })
-    .then(content => {
-        const lines = content.split('\n'); // Divide el contenido en líneas
-        const parsedData = [];
-
-        lines.forEach((line) => {
-            const columns = line.trim().split(/\s+/); // Divide por espacios o tabulaciones
-            if (columns.length >= 4) {
-                const [day, month, year, ...textParts] = columns;
-                const text = textParts.join(' '); // Reconstruye el texto si contiene espacios
-                const date = new Date(`${year}-${month}-${day}`);
-                parsedData.push({ date, text });
-            }
-        });
-
-        populateTable(parsedData);
-    })
-    .catch(error => console.error('Error:', error));
-
-function populateTable(data) {
-    const today = new Date(); // Fecha actual
-    dataTableBody.innerHTML = ''; // Limpia el contenido previo de la tabla
-
-    data.forEach((item) => {
-        const row = document.createElement('tr');
-        const formattedDate = `${item.date.getDate().toString().padStart(2, '0')}/` +
-            `${(item.date.getMonth() + 1).toString().padStart(2, '0')}/` +
-            `${item.date.getFullYear()}`;
-
-        const status = item.date < today ? 'Finalizado' : 'Abierta';
-
-        row.innerHTML = `
-          <td>${formattedDate}</td>
-          <td>${item.text}</td>
-          <td>${status}</td>
-        `;
-        dataTableBody.appendChild(row);
+if (scrollToTopButton) {
+    scrollToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 }
-
-
