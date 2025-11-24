@@ -1,14 +1,39 @@
-document.getElementById('convocatorias-link').addEventListener('click', function(e) {
-    e.preventDefault();  // Previene el comportamiento predeterminado del enlace
+/*
+=========================================
+--- SCRIPT PARA EL HEADER CON SCROLL ---
+=========================================
+*/
+document.addEventListener('DOMContentLoaded', () => {
   
-    // Obtiene el elemento al que queremos hacer scroll (en este caso, el elemento con el ID "convocatorias")
-    const targetElement = document.querySelector('#convocatorias');
+  // 1. Script de scroll para el header
+  const header = document.querySelector('.main-header');
   
-    // Realiza el scroll suave y centra la sección
-    targetElement.scrollIntoView({
-      behavior: 'smooth',  // Desplazamiento suave
-      block: 'center',     // Centra el elemento en la ventana
-      inline: 'nearest'    // Alineación horizontal
+  if (header) {
+    window.addEventListener('scroll', () => {
+      // Si el scroll es mayor de 10px
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     });
-  });
+  }
+
+  // 2. Tu script antiguo de 'convocatorias-link' (re-integrado)
+  const convocatoriasLink = document.getElementById('convocatorias-link');
   
+  if (convocatoriasLink) {
+    convocatoriasLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector('#convocatorias');
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }
+    });
+  }
+  
+});
