@@ -1,3 +1,6 @@
 20 03 2025 Portadas I
 31 04 2025 Textos I
 31 04 2025 Obras Gráficas I
+20 03 2025 Portadas II
+31 04 2025 Textos II
+31 04 2025 Obras Gráficas II
